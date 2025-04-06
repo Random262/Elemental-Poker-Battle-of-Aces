@@ -1,0 +1,162 @@
+[gd_scene load_steps=2 format=3 uid="uid://8nshq2h5bhch"]
+
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_lnm5s"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lnm5s")
+
+[node name="PlayerArea" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+offset_left = -15.2
+offset_top = 450.0
+offset_right = -36.7999
+offset_bottom = -48.0
+
+[node name="PlayerCards" type="HBoxContainer" parent="PlayerArea"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 1
+offset_right = 900.0
+offset_bottom = 150.0
+alignment = 1
+
+[node name="Card1" type="Button" parent="PlayerArea/PlayerCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Card2" type="Button" parent="PlayerArea/PlayerCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Card3" type="Button" parent="PlayerArea/PlayerCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Card4" type="Button" parent="PlayerArea/PlayerCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Card5" type="Button" parent="PlayerArea/PlayerCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="EnemyArea" type="Control" parent="."]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = -152.0
+offset_bottom = -398.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemyCards" type="HBoxContainer" parent="EnemyArea"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 1
+anchors_preset = -1
+offset_right = 900.0
+offset_bottom = 150.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Card1" type="Button" parent="EnemyArea/EnemyCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Card2" type="Button" parent="EnemyArea/EnemyCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Card3" type="Button" parent="EnemyArea/EnemyCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Card4" type="Button" parent="EnemyArea/EnemyCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="Card5" type="Button" parent="EnemyArea/EnemyCards"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 900.0
+offset_top = 200.0
+offset_right = -2.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RedrawButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 210.0
+offset_bottom = 90.0
+text = "Перераздачи: 2"
+
+[node name="EndTurnButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 100.0
+offset_right = 210.0
+offset_bottom = 140.0
+text = "Конец хода"
+
+[node name="PlayerHPLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 180.0
+offset_right = 103.0
+offset_bottom = 203.0
+text = "HP Игрока: "
+
+[node name="EnemyHPLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 150.0
+offset_right = 91.0
+offset_bottom = 173.0
+text = "HP Врага: "
+
+[node name="PlayerResultLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -492.0
+offset_top = 216.0
+offset_right = -242.0
+offset_bottom = 239.0
+text = "Комбинация: "
+
+[node name="EnemyResultLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -492.0
+offset_top = 60.0
+offset_right = -242.0
+offset_bottom = 83.0
+text = "Комбинация: "
+
+[node name="Round" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.077
+offset_left = -535.0
+offset_top = 119.0
+offset_right = -139.0
+offset_bottom = 154.9
+horizontal_alignment = 1
+vertical_alignment = 1
