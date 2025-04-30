@@ -1,7 +1,12 @@
-# Elemental Poker: Battle of Aces 0.1
+# Elemental Poker: Battle of Aces 0.2
 Создание игры на игровом движке GODOT
 
 Чтобы поиграть скачайте exe файл последней версии из папки versions
+
+### Elemental Poker 0.2
+- Обновление дизайна
+- Добавление основных 4 стихий
+- Улучшение ИИ
 
 ### Elemental Poker 0.1
 - Создание базового геймплея видеопокера

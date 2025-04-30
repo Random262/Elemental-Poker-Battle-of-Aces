@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://8nshq2h5bhch"]
+[gd_scene load_steps=7 format=3 uid="uid://8nshq2h5bhch"]
 
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_lnm5s"]
+[ext_resource type="Texture2D" uid="uid://edqbnelu1257" path="res://textures/hero_lina.png" id="2_rl4no"]
+[ext_resource type="Texture2D" uid="uid://cas1v0byauxq5" path="res://textures/hero_rael.png" id="3_flpai"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ktnw7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rx3j"]
+bg_color = Color(1, 0.321569, 0.321569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_deuco"]
+bg_color = Color(0.321569, 1, 0.321569, 1)
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -11,84 +21,180 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lnm5s")
 
+[node name="Background" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HeroPlayer" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.596
+anchor_top = -0.67
+anchor_right = -3.596
+anchor_bottom = -0.67
+offset_left = 4165.59
+offset_top = 766.16
+offset_right = 4355.59
+offset_bottom = 1050.16
+texture = ExtResource("2_rl4no")
+
+[node name="HeroEnemy" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.596
+anchor_top = -0.67
+anchor_right = -3.596
+anchor_bottom = -0.67
+offset_left = 4165.59
+offset_top = 466.16
+offset_right = 4355.59
+offset_bottom = 750.16
+texture = ExtResource("3_flpai")
+
 [node name="PlayerArea" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.1
-anchor_right = 0.9
-anchor_bottom = 1.0
-offset_left = -15.2
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 100.0
 offset_top = 450.0
-offset_right = -36.7999
-offset_bottom = -48.0
+offset_right = -152.0
+offset_bottom = 600.0
+grow_horizontal = 2
 
 [node name="PlayerCards" type="HBoxContainer" parent="PlayerArea"]
 custom_minimum_size = Vector2(900, 150)
 layout_mode = 1
-offset_right = 900.0
-offset_bottom = 150.0
+anchors_preset = -1
+anchor_left = -0.11
+anchor_top = -3.003
+anchor_right = 1.168
+anchor_bottom = -3.003
+offset_left = 99.0
+offset_top = 375.45
+offset_right = -151.2
+offset_bottom = 555.45
 alignment = 1
 
 [node name="Card1" type="Button" parent="PlayerArea/PlayerCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="PlayerArea/PlayerCards/Card1"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
+
 [node name="Card2" type="Button" parent="PlayerArea/PlayerCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerArea/PlayerCards/Card2"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
 
 [node name="Card3" type="Button" parent="PlayerArea/PlayerCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="PlayerArea/PlayerCards/Card3"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
+
 [node name="Card4" type="Button" parent="PlayerArea/PlayerCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerArea/PlayerCards/Card4"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
 
 [node name="Card5" type="Button" parent="PlayerArea/PlayerCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="PlayerArea/PlayerCards/Card5"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
+
 [node name="EnemyArea" type="Control" parent="."]
 custom_minimum_size = Vector2(900, 150)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 100.0
 offset_top = 100.0
 offset_right = -152.0
-offset_bottom = -398.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EnemyCards" type="HBoxContainer" parent="EnemyArea"]
-custom_minimum_size = Vector2(900, 150)
+custom_minimum_size = Vector2(900, 180)
 layout_mode = 1
 anchors_preset = -1
-offset_right = 900.0
-offset_bottom = 150.0
+anchor_left = -0.11
+anchor_top = -0.679
+anchor_right = 1.171
+anchor_bottom = -0.679
+offset_left = 99.0
+offset_top = 101.85
+offset_right = -153.9
+offset_bottom = 281.85
 grow_horizontal = 2
 alignment = 1
 
 [node name="Card1" type="Button" parent="EnemyArea/EnemyCards"]
+material = SubResource("CanvasItemMaterial_ktnw7")
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="EnemyArea/EnemyCards/Card1"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
 
 [node name="Card2" type="Button" parent="EnemyArea/EnemyCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="EnemyArea/EnemyCards/Card2"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
+
 [node name="Card3" type="Button" parent="EnemyArea/EnemyCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="EnemyArea/EnemyCards/Card3"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
 
 [node name="Card4" type="Button" parent="EnemyArea/EnemyCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="EnemyArea/EnemyCards/Card4"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
+
 [node name="Card5" type="Button" parent="EnemyArea/EnemyCards"]
 custom_minimum_size = Vector2(120, 150)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="EnemyArea/EnemyCards/Card5"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 1
@@ -104,59 +210,110 @@ grow_vertical = 2
 
 [node name="RedrawButton" type="Button" parent="UI"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 50.0
-offset_right = 210.0
-offset_bottom = 90.0
+offset_left = 12.0
+offset_top = 84.0
+offset_right = 212.0
+offset_bottom = 124.0
 text = "Перераздачи: 2"
 
 [node name="EndTurnButton" type="Button" parent="UI"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 100.0
-offset_right = 210.0
-offset_bottom = 140.0
+offset_left = 12.0
+offset_top = 137.0
+offset_right = 212.0
+offset_bottom = 177.0
 text = "Конец хода"
 
 [node name="PlayerHPLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 180.0
-offset_right = 103.0
-offset_bottom = 203.0
+offset_left = -876.0
+offset_top = 419.0
+offset_right = -783.0
+offset_bottom = 442.0
 text = "HP Игрока: "
 
 [node name="EnemyHPLabel" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 150.0
-offset_right = 91.0
-offset_bottom = 173.0
+offset_left = -874.0
+offset_top = -191.0
+offset_right = -793.0
+offset_bottom = -168.0
 text = "HP Врага: "
 
 [node name="PlayerResultLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -492.0
-offset_top = 216.0
-offset_right = -242.0
-offset_bottom = 239.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.602
+anchor_top = 1.498
+anchor_right = 1.0
+anchor_bottom = 1.498
+offset_left = 242.5
+offset_top = -322.4
+offset_right = -658.0
+offset_bottom = -299.4
 text = "Комбинация: "
 
 [node name="EnemyResultLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -492.0
-offset_top = 60.0
-offset_right = -242.0
-offset_bottom = 83.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.04
+anchor_top = 0.213
+anchor_right = -0.968
+anchor_bottom = 0.277
+offset_left = -148.0
+offset_top = 37.1
+offset_right = -166.0
+offset_bottom = 40.9
 text = "Комбинация: "
 
 [node name="Round" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 0.077
-offset_left = -535.0
-offset_top = 119.0
-offset_right = -139.0
-offset_bottom = 154.9
+offset_left = -500.0
+offset_top = 370.0
+offset_right = -258.0
+offset_bottom = 405.9
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PlayerBar" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = -676.0
+offset_top = 135.0
+offset_right = -396.0
+offset_bottom = 146.0
+rotation = 1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_6rx3j")
+theme_override_styles/fill = SubResource("StyleBoxFlat_deuco")
+step = 1.0
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="EnemyBar" type="ProgressBar" parent="UI"]
+offset_left = -676.0
+offset_top = -165.0
+offset_right = -401.0
+offset_bottom = -154.0
+rotation = 1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_6rx3j")
+theme_override_styles/fill = SubResource("StyleBoxFlat_deuco")
+step = 1.0
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="PlayerShieldLabel" type="Label" parent="UI"]
+offset_left = -749.0
+offset_top = 419.0
+offset_right = -642.0
+offset_bottom = 442.0
+text = "Щит Игрока: "
+
+[node name="EnemyShieldLabel" type="Label" parent="UI"]
+offset_left = -763.0
+offset_top = -191.0
+offset_right = -667.0
+offset_bottom = -168.0
+text = "Щит Врага: "
