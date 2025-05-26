@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4i2trk3o54uq"]
+
+[ext_resource type="Script" path="res://scripts/Adventure.gd" id="1_atpem"]
+[ext_resource type="Texture2D" uid="uid://bp8cr7yr4a77i" path="res://textures/adventure/1.png" id="2_3qp4i"]
+[ext_resource type="Texture2D" uid="uid://c7q26lhba3oq6" path="res://textures/adventure/2.png" id="3_0t82r"]
+[ext_resource type="Texture2D" uid="uid://bdbmdjdguc86p" path="res://textures/adventure/3.png" id="4_cvgnf"]
+[ext_resource type="Texture2D" uid="uid://d3w3w64w3owy1" path="res://textures/adventure/4.png" id="5_nh411"]
+[ext_resource type="Texture2D" uid="uid://bopw62r1rgi03" path="res://textures/adventure/5.png" id="6_ulgnp"]
+[ext_resource type="Texture2D" uid="uid://nvyp40odo570" path="res://textures/adventure/6.png" id="7_dxuja"]
+[ext_resource type="Texture2D" uid="uid://dmrl1lcrk7fi8" path="res://textures/misc/exit_icon.png" id="8_vh2iu"]
+[ext_resource type="Texture2D" uid="uid://b8vsh8vgkg2hw" path="res://textures/misc/exit_hover_icon.png" id="9_67jx8"]
+[ext_resource type="Texture2D" uid="uid://pjnuaye8wiql" path="res://textures/misc/gears_icon.png" id="10_6fh6y"]
+[ext_resource type="Texture2D" uid="uid://cxtg6hsf1f4un" path="res://textures/misc/gears_hover_icon.png" id="11_mkbw8"]
+
+[node name="Adventure" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_atpem")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="First" type="TextureButton" parent="ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(576, 648)
+layout_mode = 2
+texture_normal = ExtResource("2_3qp4i")
+stretch_mode = 0
+
+[node name="Second" type="TextureButton" parent="ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(576, 648)
+layout_mode = 2
+texture_normal = ExtResource("3_0t82r")
+stretch_mode = 0
+
+[node name="Third" type="TextureButton" parent="ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(576, 648)
+layout_mode = 2
+texture_normal = ExtResource("4_cvgnf")
+stretch_mode = 0
+
+[node name="Fourth" type="TextureButton" parent="ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(576, 648)
+layout_mode = 2
+texture_normal = ExtResource("5_nh411")
+stretch_mode = 0
+
+[node name="Fifth" type="TextureButton" parent="ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(576, 648)
+layout_mode = 2
+texture_normal = ExtResource("6_ulgnp")
+stretch_mode = 0
+
+[node name="Sixth" type="TextureButton" parent="ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(576, 648)
+layout_mode = 2
+texture_normal = ExtResource("7_dxuja")
+stretch_mode = 0
+
+[node name="SettingsToMenu" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.6
+anchor_top = -0.667
+anchor_right = -3.6
+anchor_bottom = -0.667
+offset_left = 1112.0
+offset_top = 554.0
+offset_right = 1152.0
+offset_bottom = 594.0
+texture_normal = ExtResource("8_vh2iu")
+texture_pressed = ExtResource("8_vh2iu")
+texture_hover = ExtResource("9_67jx8")
+stretch_mode = 0
+
+[node name="SettingButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.604
+anchor_top = -0.667
+anchor_right = -3.604
+anchor_bottom = -0.667
+offset_left = 1112.0
+offset_top = 599.0
+offset_right = 1152.0
+offset_bottom = 639.0
+texture_normal = ExtResource("10_6fh6y")
+texture_pressed = ExtResource("10_6fh6y")
+texture_hover = ExtResource("11_mkbw8")
+stretch_mode = 0

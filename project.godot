@@ -11,13 +11,21 @@ config_version=5
 [application]
 
 config/name="Elemental Poker"
-run/main_scene="res://scenes/Game.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
+
+[autoload]
+
+MusicManager="*res://scripts/MusicManager.gd"
+BattleState="*res://scripts/BattleState.gd"
+SettingManager="*res://scripts/SettingManager.gd"
 
 [display]
 
 window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [rendering]
 
