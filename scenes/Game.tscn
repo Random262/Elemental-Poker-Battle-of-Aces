@@ -262,6 +262,7 @@ volume_db = -25.0
 volume_db = -10.0
 
 [node name="Battle_Elements_SFX" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
 
 [node name="Your_turn" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
@@ -378,7 +379,6 @@ libraries = {
 }
 
 [node name="HeroEnemy" type="TextureRect" parent="."]
-z_index = 1
 layout_mode = 1
 anchors_preset = -1
 offset_left = 23.0

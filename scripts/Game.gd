@@ -88,7 +88,7 @@ func match_enemy_texture():
 		"water_villain":
 			$HeroEnemy.texture = load("res://textures/heroes/villain_water.png")
 			random_bg_element = "WATER"
-			suits_villain = ["W", "E"]
+			suits_villain = ["W", "A"]
 		"earth_villain":
 			$HeroEnemy.texture = load("res://textures/heroes/villain_earth.png")
 			random_bg_element = "EARTH"
@@ -503,15 +503,17 @@ func start_enemy_turn():
 
 func count_player_comb_damage():
 	if player_comb_result.damage > 0:
+		var old_enemy_hp = enemy_hp
 		match player_comb_result.elem:
 			"F":
 				if enemy_shield > 0:
 					enemy_hp = max(0, enemy_hp - max(floor(player_comb_result.damage*1.25) - enemy_shield, 0))
-					enemy_shield = max(enemy_shield - player_comb_result.damage, 0)
-					$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(floor(player_comb_result.damage*1.25) - enemy_shield)
+					enemy_shield = max(enemy_shield - player_comb_result.damage*1.25, 0)
+					#$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(floor(player_comb_result.damage*1.25) - enemy_shield)
 				else:	
 					enemy_hp = max(0, enemy_hp - floor(player_comb_result.damage*1.25))
-					$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(floor(player_comb_result.damage*1.25))
+					#$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(floor(player_comb_result.damage*1.25))
+				$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(old_enemy_hp - enemy_hp)
 				battle_elements_sfx.stream = load("res://sounds/fire.wav")	
 				$HeroPlayerAttack.play("attack_enemy")					
 			"W":
@@ -524,11 +526,12 @@ func count_player_comb_damage():
 					flag = true
 				if enemy_shield > 0:
 					enemy_hp = max(0, enemy_hp - max(player_comb_result.damage - enemy_shield, 0))
-					enemy_shield = max(enemy_shield - player_comb_result.damage, 0)	
-					$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(player_comb_result.damage - enemy_shield)				
+					enemy_shield = max(enemy_shield - player_comb_result.damage, 0)
+					#$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(player_comb_result.damage - enemy_shield)				
 				else:	
 					enemy_hp = max(0, enemy_hp - player_comb_result.damage)
-					$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(player_comb_result.damage)
+					#$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(player_comb_result.damage)
+				$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(old_enemy_hp - enemy_hp)	
 				if flag:
 					$UI/PlayerResultLabel.text = player_comb_result.comb + " ВОЗДУХА"  + "  |  Урон:  " + str(player_comb_result.damage) + "  |  Двойной удар"
 					battle_elements_sfx.stream = load("res://sounds/air.wav")
@@ -544,10 +547,11 @@ func count_player_comb_damage():
 				if enemy_shield > 0:
 					enemy_hp = max(0, enemy_hp - max(player_comb_result.damage - enemy_shield, 0))
 					enemy_shield = max(enemy_shield - player_comb_result.damage, 0)
-					$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(player_comb_result.damage - enemy_shield)
+					#$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(player_comb_result.damage - enemy_shield)
 				else:	
 					enemy_hp = max(0, enemy_hp - player_comb_result.damage)
-					$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(player_comb_result.damage)
+					#$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(player_comb_result.damage)
+				$HeroPlayerAttackTexture/DamageLabel.text = "-" + str(old_enemy_hp - enemy_hp)
 				battle_elements_sfx.stream = load("res://sounds/hit.wav")
 				$HeroPlayerAttack.play("attack_enemy")
 		player_comb_result.damage = 0
@@ -556,17 +560,18 @@ func count_player_comb_damage():
 	
 func count_enemy_comb_damage():
 	if enemy_comb_result.damage > 0:
-		
+		var old_player_hp = player_hp
 		match enemy_comb_result.elem:
 			"F":
 				if player_shield > 0:
 					player_hp = max(0, player_hp - max(floor(enemy_comb_result.damage*1.25) - player_shield, 0))
 					player_shield = max(player_shield - enemy_comb_result.damage, 0)
-					$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(floor(enemy_comb_result.damage*1.25) - player_shield)
+					#$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(floor(enemy_comb_result.damage*1.25) - player_shield)
 				else:	
 					player_hp = max(0, player_hp - floor(enemy_comb_result.damage*1.25))
-					$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(floor(enemy_comb_result.damage*1.25))
-				battle_elements_sfx.stream = load("res://sounds/air.wav")
+					#$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(floor(enemy_comb_result.damage*1.25))
+				$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(old_player_hp - player_hp)
+				battle_elements_sfx.stream = load("res://sounds/fire.wav")
 				$EnemyPlayerAttack.play("attack_player")
 				
 			"W":
@@ -575,24 +580,17 @@ func count_enemy_comb_damage():
 			"A":
 				if randf() < 0.5:
 					enemy_comb_result.damage *= 2
-					$UI/EnemyResultLabel.text = enemy_comb_result.comb + " ВОЗДУХА"  + "  |  Урон:  " + str(enemy_comb_result.damage) + "  |  Двойной удар"
-					if player_shield > 0:
-						$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(enemy_comb_result.damage - player_shield)
-					else:
-						$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(enemy_comb_result.damage)	
+					$UI/EnemyResultLabel.text = enemy_comb_result.comb + " ВОЗДУХА"  + "  |  Урон:  " + str(enemy_comb_result.damage) + "  |  Двойной удар"	
 					battle_elements_sfx.stream = load("res://sounds/air.wav")
 				else:
 					$UI/EnemyResultLabel.text = enemy_comb_result.comb + " ВОЗДУХА"  + "  |  Урон:  " + str(enemy_comb_result.damage) + "  |  Промах"	
-					if player_shield > 0:
-						$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(enemy_comb_result.damage - player_shield)
-					else:
-						$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(enemy_comb_result.damage)	
 					battle_elements_sfx.stream = load("res://sounds/air_miss.wav")
 				if player_shield > 0:
 					player_hp = max(0, player_hp - max(enemy_comb_result.damage - player_shield, 0))
 					player_shield = max(player_shield - enemy_comb_result.damage, 0)
 				else:	
 					player_hp = max(0, player_hp - enemy_comb_result.damage)
+				$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(old_player_hp - player_hp)
 				$EnemyPlayerAttack.play("attack_player")
 			"E":
 				enemy_shield += floor(enemy_comb_result.damage*earth_coef)
@@ -602,10 +600,11 @@ func count_enemy_comb_damage():
 				if player_shield > 0:
 					player_hp = max(0, player_hp - max(enemy_comb_result.damage - player_shield, 0))
 					player_shield = max(player_shield - enemy_comb_result.damage, 0)
-					$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(enemy_comb_result.damage - player_shield)
+					#$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(enemy_comb_result.damage - player_shield)
 				else:	
 					player_hp = max(0, player_hp - enemy_comb_result.damage)
-					$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(enemy_comb_result.damage)
+					#$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(enemy_comb_result.damage)
+				$HeroEnemyAttackTexture/DamageLabelPlayer.text = "-" + str(old_player_hp - player_hp)
 				battle_elements_sfx.stream = load("res://sounds/hit.wav")
 				$EnemyPlayerAttack.play("attack_player")
 				

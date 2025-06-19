@@ -1,7 +1,10 @@
-# Elemental Poker: Battle of Aces 1.0
+# Elemental Poker: Battle of Aces 1.1
 Создание игры на игровом движке GODOT
 
-Чтобы поиграть скачайте exe файл последней версии из папки versions
+Чтобы поиграть, скомпилируйте игру, используя godot 4.2.1 
+
+### Elemental Poker 1.1
+- Исправлены некоторые визуальные баги
 
 ### Elemental Poker 1.0
 - Добавлено главное меню
